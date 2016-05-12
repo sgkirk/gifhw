@@ -57,7 +57,7 @@ function displayGifs(){
 			var animalGif = $('<div class="gifHolder">');
 
 			// Retrieves the Rating Data
-			var rating = response.Rated;
+			var rating = data.rating;
 
 			// Creates an element to have the rating displayed
 			var pOne = $('<p>').text( "Rating: " + rating);
@@ -65,8 +65,8 @@ function displayGifs(){
 			// Displays the rrating
 			animalGif.append(pOne);
 
-			// Creates an element to hold the image 
-			var image = $('<img>').attr("src", response.Poster);
+			// Creates an element to hold the gif
+			var image = $('<img>').attr("src", data.url);
 
 			// Appends the image
 			animalGif.append(image);
@@ -76,6 +76,7 @@ function displayGifs(){
 		});
 
 	}
+
 
 	// Generic function for displaying the gifs
 	$(document).on('click', '.animal', displayGifs);
