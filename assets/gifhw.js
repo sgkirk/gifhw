@@ -5,15 +5,14 @@
 // Show buttons
 	function renderButtons(){ 
 
-		// Deletes the movies prior to adding new movies (this is necessary otherwise you will have repeat buttons)
+		// Deletes the animals prior to adding new animals (get rid of repeat buttons)
 		$('#animalButtons').empty();
 
-		// Loops through the array of movies
+		// Loops through the array of animals
 		for (var i = 0; i < animalArray.length; i++){
 
-			// Then dynamicaly generates buttons for each movie in the array
-
-			// Note the jQUery syntax here... 
+		// Then dynamicaly generates buttons for each animal in the array
+		// Note the jQUery syntax here... 
 		    var a = $('<button>') // This code $('<button>') is all jQuery needs to create the beginning and end tag. (<button></button>)
 		    a.addClass('animal'); // Added a class 
 		    a.attr('data-name', animalArray[i]); // Added a data-attribute
@@ -24,7 +23,7 @@
 
 	renderButtons();
 
-// Add user input to animalArray
+// Add user input to animalArray 
 
 $('#addAnimal').on('click', function(){
 
@@ -32,10 +31,16 @@ $('#addAnimal').on('click', function(){
 
 	animalArray.push(userInput);
 
+	// Create new button
+
 	renderButtons();
+
+	//enter works as click submit
 
 	return false;
 
 });
+
+
 
 console.log(animalArray);
