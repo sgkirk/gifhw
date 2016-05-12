@@ -41,6 +41,21 @@ $('#addAnimal').on('click', function(){
 
 });
 
+//console.log(animalArray);
 
 
-console.log(animalArray);
+//Display the animalgifs
+function displayGifs(){
+		
+	var animal = $(this).attr('data-name');
+	var queryUrl = "http://api.giphy.com/v1/gifs/search?q=" + animal + "&limit=10&api_key=dc6zaTOxFJmzC";
+
+	// ajax request
+	$.ajax({url: queryUrl, method: 'GET'}).done(function(response){
+
+	// empty old gifs
+	$('#animals').empty();
+
+	});
+
+};
