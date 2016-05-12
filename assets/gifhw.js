@@ -46,16 +46,36 @@ $('#addAnimal').on('click', function(){
 
 //Display the animalgifs
 function displayGifs(){
-		
-	var animal = $(this).attr('data-name');
+       
+    var animal = $(animalArray).attr('data-name');
 	var queryUrl = "http://api.giphy.com/v1/gifs/search?q=" + animal + "&limit=10&api_key=dc6zaTOxFJmzC";
 
-	// ajax request
-	$.ajax({url: queryUrl, method: 'GET'}).done(function(response){
+       // Creates AJAX call for the specific animal
+		$.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 
-	// empty old gifs
-	$('#animals').empty();
+			// Creates a generic div to hold the gif
+			var animalGif = $('<div class="gifHolder">');
 
-	});
+			// Retrieves the Rating Data
+			var rating = response.Rated;
 
-};
+			// Creates an element to have the rating displayed
+			var pOne = $('<p>').text( "Rating: " + rating);
+
+			// Displays the rrating
+			animalGif.append(pOne);
+
+			// Creates an element to hold the image 
+			var image = $('<img>').attr("src", response.Poster);
+
+			// Appends the image
+			animalGif.append(image);
+
+			// Puts the entire Movie above the previous movies.
+			$('#animals').prepend(animalGif);
+		});
+
+	}
+
+	// Generic function for displaying the gifs
+	$(document).on('click', '.animal', displayGifs);
